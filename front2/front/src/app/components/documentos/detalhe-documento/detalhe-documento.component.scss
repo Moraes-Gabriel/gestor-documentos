@@ -1,0 +1,36 @@
+.div-content {
+    border: 1px solid lightgrey;
+    border-radius: 2%;
+    margin-top: 20px;
+}
+
+.div-titulo {
+    height: 65px;
+    padding: 12px;
+    padding-left: 15px;
+}
+
+.div-box-info {
+    display: flex;
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+}
+
+.box-info {
+    height: 120px;
+    width: 180px;
+    border-right: 1px solid lightgrey;
+    padding: 15px;
+}
+
+.div-pdf {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+.pdf-viwer {
+    width: 75%;
+    height: 90%;
+    padding-top: 50px;
+}
+

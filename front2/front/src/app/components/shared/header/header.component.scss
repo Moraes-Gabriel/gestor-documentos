@@ -1,0 +1,80 @@
+
+.div_main {
+    height: 104px;
+    color: white;
+    background-image: url(../../../../assets/backgrounds/backgrounds-azul.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin-top: -2px;
+    margin-right: -3px;
+    margin-left: -3px;
+}
+
+.container {
+    height: 100%;
+}
+section {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content_header_inicio {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.img-icon-header {
+    height: 45px;
+    margin-right: 20px;
+}
+
+h2 {
+    font-size: 14px;
+}
+
+.div_titulo {}
+
+.content_header_two {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.barra {
+    height: 75%;
+    width: 3px;
+    background-color: white;
+    margin: 0 30px;
+}
+
+.content_header_two>h3 {
+    font-size: 20px;
+}
+
+.content_header_two>p {
+    margin: 0;
+    font-size: 12px;
+}
+.content_header_fim {
+    align-self: center;
+}
+.dropdown > button{
+    display: flex;
+    padding: 0;
+}
+.dropdown > button > p{
+    margin-left: 3px;
+}
+.content_header_fim > .dropdown> button > img{
+    height: 30px;
+}
+button {
+
+    height: 40px;
+    align-self: center;
+    border: none;
+    background: none;
+    
+}

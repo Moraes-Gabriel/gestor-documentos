@@ -1,0 +1,42 @@
+.div-container {
+    height: 800px;
+    width:  600px;
+    border: 2px solid lightgrey;
+    padding: 20px;
+}
+
+header {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4px;
+}
+header > img {
+    height: 50px;
+}
+.div-titulo{ 
+    margin-top: 20px;
+}
+section {
+    border: 2px solid lightgrey;
+    height: 87%;
+    display: flex;
+    flex-direction: column;
+}
+
+.p {
+    color: lightgrey;
+}
+button { 
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.self-center {
+    align-self: center;
+}
+
+h3 {
+    font-size: 20px;
+}

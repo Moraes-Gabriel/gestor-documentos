@@ -1,0 +1,58 @@
+.main {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: round;
+}
+.tela {
+    width: 370px;
+    height: 420px;
+    background-color: white;
+
+}
+.conteudo-titulo {
+
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 50%;
+}
+.div-titulos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img {
+    height: 60px;
+}
+h2 {
+    color: #7e8ba9;
+    margin: 0 0;
+    font-size: 21px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input { 
+       width: 250px;
+       height: 50px;
+       margin-bottom: 10px;
+       border-color: lightgrey;
+       border-radius: 7%;
+       padding-left: 10px;
+}
+button {
+    background: darkblue;
+    height: 40px;
+    width: 120px;
+    color: white;
+    border: none;
+    border-radius: 7%;
+}

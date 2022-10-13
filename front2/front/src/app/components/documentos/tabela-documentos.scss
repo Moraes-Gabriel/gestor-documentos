@@ -1,0 +1,92 @@
+.container {
+}
+.titulo { 
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+form {
+
+}
+form > div{
+margin-right: 20px;
+}
+.div-input {
+    display: flex;
+}
+.div-input > input{
+}
+.img-spam {
+    background-color: white;
+    border-left: none;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+.img-spam > img {
+    height: 20px;
+}
+
+.pesquisa-documento {
+    border-radius: 0;
+    border-bottom-left-radius: 7%;
+    border-top-left-radius: 7%;
+}
+select {
+    flex: none;
+    border-radius: 12% !important;
+    
+}
+.tabela-select {
+    flex: none;
+    width: 100%;
+    color: #415d8e;
+    border:none;
+}
+.div-select {
+    margin-right: 20px;
+    display: flex;
+}
+thead > tr {
+    color: grey;
+}
+
+th {
+    font-size: 12px;
+}
+
+.th-img {
+    height: 12px;
+    margin-bottom: 2px;
+}
+option:first {
+    color: #999;
+}
+select {
+    color: #999;
+}
+.nav {
+    height: 60px;
+}
+.th-descricao {
+    
+    width: 170px;
+} 
+.th-btn { 
+    height: 30px;
+    border-radius: 16%;
+    border: 1px solid white;
+    color: white;
+}
+
+.th-btn > img {
+    height: 12px;
+}
+
+.th-opções {
+}
+
+.tr-table-info {
+     height: 50px;
+}
+.tr-table-info th {
+    padding-bottom: 15px;
+}

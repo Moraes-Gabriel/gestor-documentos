@@ -1,0 +1,13 @@
+<app-header (outPutModeAdmin)="mudarModeAdmin($event)"></app-header>
+
+    <div *ngIf="((accountService.currentUser$ | async) !== null) && !modeAdmin">
+        <app-nav-documentos></app-nav-documentos>
+    </div>
+
+    <div class="" [ngStyle]="{'display': display}" style="height: 100vh;">
+        <div *ngIf="modeAdmin && ((accountService.currentUser$ | async) !== null)">
+        <app-nav-admin></app-nav-admin>
+        </div>
+
+        <router-outlet ></router-outlet>
+    </div>

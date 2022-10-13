@@ -1,0 +1,37 @@
+<div *ngIf="showMenu()">
+<div class="container div_main_angular" >
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="div_lista collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto ul-a">
+        <li class="nav-item active li-a" [ngStyle]="{'background': corMeu}" (click)="corMeuFunc()">
+          <a class="nav-link" routerLink="/documentos/meus">
+            <img src="../../../../assets/imagens/file.png"  alt="">
+            <p>Meus Documentos</p>
+          </a>
+        </li>
+        <li class="nav-item li-a" [ngStyle]="{'background': corAll}" (click)="corAllFunc()">
+          <a class="nav-link" routerLink="/documentos/indice">
+            <img src="../../../../assets/imagens/menu-button-of-three-horizontal-lines.png" class="img-3" alt="">
+            <p>Índice Documentos</p>
+          </a>
+        </li>
+      </ul>
+      
+      <ul>
+        <li class="li-btn">
+          <button class="azul btn"  routerLink="/documentos/criar" (click)="nenhumaCorFunc()">
+            <img  class="img-criar-doc" src="../../../../assets/imagens/add.png" alt="">
+              <p class="azul p criar-doc">Criar documento</p>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<div class="tabela-margin lightcinza"></div>
+
+</div>

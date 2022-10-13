@@ -1,0 +1,47 @@
+<div class="container">
+    <h3 class="titulo azul">{{titulo}}</h3>
+
+    <div class="div-info">
+        <div class="div-abreviacao">
+            <h4>{{documento.abreviacao}}</h4>
+        </div>
+        <div class="div-info-p">
+            <p class="lightazul">Seu códico de Documento foi criado</p>
+        </div>
+    </div>
+
+    <div class="div-classes-documento">
+        <div class="div-info-tipo-e-concessao">
+            <p>CONCESSAO</p>
+            <div class="div-tipo-ou-concessao">
+                <h5>{{documento.concessao.nome}}</h5>
+            </div>
+
+        </div>
+
+        <div class="div-info-tipo-e-concessao">
+            <p>TIPO DE DOCUMENTO</p>
+            <div class="div-tipo-ou-concessao">
+                <h5>{{documento.tipo.nome}}</h5>
+            </div>
+        </div>
+    </div>
+
+    <section class="lightcinza" *ngIf="!file">
+        <div>
+            <h5> Arraste aqui um PDF.</h5>
+            <input type="file" class="botao" id="file" (change)="onFileSelected()" (change)="onChange($event)">
+        </div>
+    </section>
+    <section class="lightcinza div-pdf" *ngIf="file">
+        <pdf-viewer class="pdf-viwer" [src]="pdfDoc" [render-text]="true" [original-size]="false">
+        </pdf-viewer>
+        <button (click)="deletarPdf()" type="button" class="btn btn-outline-danger button-delete-pdf-viwer">X</button>
+    </section>
+
+    <button class="btn btn-primary botao " (click)="onClickAdicionarPdfAoDocumento()">
+        <img src="../../../../assets/imagens/save.png" class="icon" alt="">
+        Salvar Documento</button>
+
+
+</div>

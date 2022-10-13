@@ -1,0 +1,62 @@
+<div class="div-container">
+        <header >
+            <img alt="">
+        </header>
+        <section class="container azul">
+            <div class="div-titulo">
+            <h3 class="azul text-center"> NOVO DOCUMENTO CADASTRADO</h3>
+            <h3 class="azul text-center"> PARA APROVAÇÃO</h3>
+        </div>
+        
+        <p class="p text-center">Por favor clique no link abaixo para gerar uma senha de acesso. </p>
+
+            <h5>CONCESSÃO</h5>
+            <p>{{documento.concessao.nome}}</p>
+
+            <h5 class="azul">TIPO</h5>
+            <p>{{documento.tipo.nome | json}}</p>
+
+            <h5>DONO</h5>
+            <p>{{documento.usuario.nome}}</p>
+
+            <h5>ENVIO</h5>
+            <p>{{documento.usuario.nome}}({{documento.usuario.email}})</p>
+            <p>{{documento.editadoOn}}</p>
+
+            <button class="btn btn-primary bac-azul self-center"> VER DETALHAMENTO</button>
+
+            <p class="p self-center">Duvidas? Entrar em contato com service.desk@taesa.com.br</p>
+
+        </section>
+</div>
+/*
+<div class="div-container">
+    <header >
+        <img alt="">
+    </header>
+    <section class="container azul">
+        <div class="div-titulo">
+        <h3 class="azul text-center"> NOVO DOCUMENTO CADASTRADO</h3>
+        <h3 class="azul text-center"> PARA APROVAÇÃO</h3>
+    </div>
+    <p class="p text-center">Por favor clique no link abaixo para gerar uma senha de acesso. </p>
+
+        <h5>CONCESSÃO</h5>
+        <p>1</p>
+
+        <h5 class="azul">TIPO</h5>
+        <p>2</p>
+
+        <h5>DONO</h5>
+        <p>3</p>
+
+        <h5>ENVIO</h5>
+        <p>4</p>
+        <p>5</p>
+
+        <button class="btn btn-primary bac-azul self-center"> VER DETALHAMENTO</button>
+
+        <p class="p self-center">Duvidas? Entrar em contato com service.desk@taesa.com.br</p>
+
+    </section>
+</div>

@@ -1,0 +1,102 @@
+.titulo {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+.div-info {
+
+    display: flex;
+    height: 65px;
+    border: 1px solid lightgrey;
+}
+.div-abreviacao {
+    
+    width: 20%;
+    background: forestgreen;
+    border-radius: 8%;
+    border-bottom-right-radius: initial;
+    border-top-right-radius: initial;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.div-abreviacao h4 {
+    font-size: 22px;
+}
+
+.div-info-p {
+    display: flex;
+    padding: 15px;
+}
+
+.div-classes-documento {
+
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+
+.div-info-tipo-e-concessao {
+    width: 48%;
+}
+
+.div-tipo-ou-concessao {
+    height: 50px;
+    border: 1px solid lightgrey;
+    border-radius: 6%;
+    padding: 15px;
+    padding-top: 12px;
+}
+.div-tipo-ou-concessao > h5 {
+    color: darkgrey;
+    font-size: 16px;
+}
+
+section {
+    margin-top: 35px;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px
+}
+section  > div{
+    height: 80%;
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 35px 0;
+    align-items: center;
+    border: 1px solid lightgrey;
+}
+section  > div h5{
+   color: black;
+}
+section  > div input{
+    display: flex;
+    flex-direction: column;
+    height: 30px;
+}
+.botao{
+    height: 40px;
+    background-color: #7082a4;
+    color: white;
+    margin-bottom: 50px;
+}
+
+.div-pdf {
+    height: 75vh;
+}
+.pdf-viwer {
+    width: 75%;
+    height: 100%
+}
+
+
+.button-delete-pdf-viwer{
+
+    display: flex;
+    align-self: baseline;
+}

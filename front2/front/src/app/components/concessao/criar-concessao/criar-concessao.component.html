@@ -1,0 +1,47 @@
+<div class="container">
+    <h2 class="titulo azul">{{titulo}}</h2>
+
+    <form action="" [formGroup]="form">
+        <div class="div_form">
+            <div class="div_select">
+                <label for="" class="azul">Concessão</label>
+                <input formControlName="nome" 
+        [ngClass]="{'is-invalid': f.nome?.errors && f.nome.touched}"
+            placeholder="Digite o nome da concessao aqui" type="text" 
+            class="form-control pesquisa-documento">
+
+                <div *ngIf="f.nome?.errors && f.nome.touched" class="invalid-feedback">
+                    Descricao deve ser preenchido
+                </div>
+            </div>
+
+            <div class="div_select">
+                <label for="" class="azul">sigla</label>
+                <input formControlName="sigla" 
+        [ngClass]="{'is-invalid': f.sigla?.errors && f.sigla.touched}"
+            placeholder="Digite a sigla da concessao aqui" type="text" 
+            class="form-control pesquisa-documento">
+                <div *ngIf="f.sigla?.errors && f.sigla.touched" class="invalid-feedback">
+                    Nome deve ser preenchido
+                </div>
+            </div>
+        </div>
+        <button (click)="salvarConcessao()" type="submit" class="btn btn-primary btn-criar-doc bac-azul">
+            <img class="img-white" src="../../../../assets/imagens/save.png" alt="">
+            {{tituloBotao}}</button>
+
+            <button *ngIf="concessaoId" tooltip="Excluir" (click)="openModal($event, template)" type="submit" class="btn btn-primary btn-criar-doc bac-azul" style="margin-left: 20px;">
+                <img class="img-white" src="../../../../assets/imagens/save.png" alt="">
+                Excluir Concessao</button>
+    </form>
+  
+    
+</div>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+      <p>Tem certeza que quer deletar o Evento de Código {{this.concessaoId}}?</p>
+      <button type="button" class="btn btn-primary" (click)="confirm()">Sim</button>
+      <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
+    </div>
+  </ng-template>

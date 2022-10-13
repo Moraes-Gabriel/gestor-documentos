@@ -1,0 +1,70 @@
+<div class="container">
+    <h2 class="titulo azul">{{titulo}}</h2>
+
+    <div class="dica">
+        <div class="bac-azul">
+            <img src="../../../../assets/imagens/dica.png" class="img-white" alt="">
+        </div>
+        <h2 class="h2 azul">Use este recurso para criar o codico de um novo documento. Após a criação você poderá fazer
+            o upload do
+            documento (PDF) pela ferramenta</h2>
+    </div>
+    <form action="" [formGroup]="form">
+        <div class="div_form">
+            <div class="div_select">
+                <label for="" class="azul">Concessão</label>
+                <select class="form-select" aria-label="Default select example" formControlName="concessaoId"
+                    [ngClass]="{'is-invalid': f.concessaoId?.errors && f.concessaoId.touched}" matNativeControl
+                    required>
+                    <option selected disabled>Escolha uma concessão</option>
+                    <option *ngIf="documento?.concessao?.nome" value="documento.concessao.id">
+                        {{documento.concessao.nome}}</option>
+                    <option *ngFor="let concessao of concessaoSelect" [value]="concessao?.id">{{concessao?.nome}}
+                    </option>
+
+                </select>
+
+                <div *ngIf="f.concessaoId?.errors && f.concessaoId.touched" class="invalid-feedback">
+                    Descricao deve ser preenchido
+                </div>
+            </div>
+
+            <div class="div_select">
+                <label for="" class="azul">Tipo</label>
+                <select class="form-select" aria-label="Default select example" formControlName="tipoId"
+                    [ngClass]="{'is-invalid': f.tipoId?.errors && f.tipoId.touched}">
+
+                    <option selected disabled>Escolha um tipo</option>
+                    <option *ngIf="documentoId" value="documento.tipo.id">{{documento.tipo.nome}}</option>
+                    <option *ngFor="let tipo of tipoSelect" [value]="tipo?.id">{{tipo?.nome}}</option>
+                </select>
+                <div *ngIf="f.tipoId?.errors && f.tipoId.touched" class="invalid-feedback">
+                    Descricao deve ser preenchido
+                </div>
+            </div>
+        </div>
+        <label for="" class="azul">Descricão</label>
+
+        <input formControlName="descricao" [ngClass]="{'is-invalid': f.descricao?.errors && f.descricao.touched}"
+            placeholder="Digite a descricao do documento aqui" type="text" class="form-control pesquisa-documento">
+        <div *ngIf="f.descricao?.errors && f.descricao.touched" class="invalid-feedback">
+            Descricao deve ser preenchido
+        </div>
+        <button (click)="salvarDocumento()" type="submit" class="btn btn-primary btn-criar-doc bac-azul">
+            <img class="img-white" src="../../../../assets/imagens/save.png" alt="">
+            {{tituloBotao}}</button>
+
+        <button *ngIf="documentoId" tooltip="Excluir" (click)="openModal($event, template)" type="submit"
+            class="btn btn-primary btn-criar-doc bac-azul" style="margin-left: 20px;">
+            <img class="img-white" src="../../../../assets/imagens/save.png" alt="">
+            Excluir Documento</button>
+    </form>
+</div>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Tem certeza que quer deletar o Evento de Código {{this.documentoId}}?</p>
+        <button type="button" class="btn btn-primary" (click)="confirm()">Sim</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">Não</button>
+    </div>
+</ng-template>

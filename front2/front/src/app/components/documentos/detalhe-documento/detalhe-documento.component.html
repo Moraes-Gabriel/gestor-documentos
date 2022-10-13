@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="div-content">
+        <div class="div-titulo">
+        <h2 class=" titulo azul">{{documento.abreviacao}} - Projeto Executivo de Subestação de Transmissão</h2>
+    </div>
+        <div class="div-box-info">
+            <div class="box-info">
+                <h5 class="azul">CONCESSÃO</h5>
+                <span>{{documento.concessao.nome}}</span>
+            </div>
+            <div class="box-info">
+                <h5 class="azul">TIPO</h5>
+                <span>{{documento.tipo.nome}}</span>
+            </div>
+            <div class="box-info">
+                <h5 class="azul">DOCUMENTO</h5>
+                <span>{{documento.abreviacao}}</span>
+            </div>
+            <div class="box-info">
+                <h5 class="azul">DATA ATUALIZÇÃO</h5>
+                <span>{{documento.editadoOn}}</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="lightcinza div-pdf" *ngIf="documento.urlArquivoS3">
+               <pdf-viewer class="pdf-viwer"
+         [src]="imageDoc" [render-text]="true" [original-size]="false">
+        </pdf-viewer>
+    </section>
+
+    <section class="lightcinza div-pdf" *ngIf="!documento.urlArquivoS3">
+        <h1>Esse documento nao há pdf</h1>
+    </section>
+</div>

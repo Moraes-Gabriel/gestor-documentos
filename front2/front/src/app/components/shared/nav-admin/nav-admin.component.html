@@ -1,0 +1,46 @@
+
+<div class="container div_main_angular bac-lightgrey-nav" style="height: 100%;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="div_lista collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto ul-a">
+          <li class="nav-item active li-a" 
+          [ngClass]="docSelecionado ? 'li-selecionado': 'li-nao-selecionado'"
+           (click)="corDocF()">
+            <a class="nav-link" routerLink="admin/documentos/indice"
+            [ngClass]="docSelecionado ? 'a-selecionado': 'a-nao-selecionado'"
+            >
+              <img src="../../../../assets/imagens/file.png" class="icon-nav" alt="">
+              <p>Gerenciar </p>
+              <br>
+              <p> Documentos</p>
+            </a>
+          </li>
+          <li class="nav-item li-a" 
+          [ngClass]="conSelecionado ? 'li-selecionado': 'li-nao-selecionado'"
+          (click)="corConF()">
+            <a class="nav-link" routerLink="admin/concessoes/indice"
+            [ngClass]="conSelecionado ? 'a-selecionado': 'a-nao-selecionado'"
+            >
+              <img src="../../../../assets/imagens/menu-button-of-three-horizontal-lines.png" class="icon-nav" alt="">
+              <p>Concessões</p>
+            </a>
+          </li>
+          <li class="nav-item li-a" 
+          [ngClass]="tipoSelecionado ? 'li-selecionado': 'li-nao-selecionado'"
+          (click)="corTipoF()">
+            <a class="nav-link" routerLink="admin   /tipos/indice"
+           [ngClass]="tipoSelecionado ? 'a-selecionado': 'a-nao-selecionado'"
+            >
+              <img src="../../../../assets/imagens/menu-button-of-three-horizontal-lines.png" class="icon-nav" alt="">
+              <p>Tipos</p>
+              <p>De Documentos</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>

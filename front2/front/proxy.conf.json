@@ -1,0 +1,14 @@
+{
+    "/**": {
+      "target": "https://localhost:7003",
+      "secure": false
+    },
+    "/posts": {
+      "target": "https://localhost:7003",
+      "secure": true,
+      "pathRewrite": {
+      "^/posts": ""
+    },
+      "changeOrigin": true
+    }
+  }
