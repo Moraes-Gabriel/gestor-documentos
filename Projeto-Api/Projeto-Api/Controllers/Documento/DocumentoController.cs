@@ -8,6 +8,10 @@ using Projeto_Api.data.request;
 using Projeto_Api.data.response;
 using Projeto_Api.Domain.page;
 using Projeto_Api.Services;
+using System.Globalization;
+using Projeto_Api.Domain.Documento;
+using SendGrid.Helpers.Mail;
+using SendGrid;
 
 namespace Projeto_Api.Controllers.DocumentoController
 {
@@ -19,7 +23,6 @@ namespace Projeto_Api.Controllers.DocumentoController
     public class DocumentoController : ControllerBase
     {
         private IDocumentoRepo repositorio;
-        private readonly IConfiguration configuration;
 
         public DocumentoController(IDocumentoRepo _repositorio)
         {
@@ -35,7 +38,6 @@ namespace Projeto_Api.Controllers.DocumentoController
         }
 
         [HttpPost("file/{id}")]
-        [AllowAnonymous]
         public async Task<IActionResult> Upload([FromForm] IFormFile file, int id)
         {
             var result = repositorio.AdicionarArquivodoNoDocumento(file, id);
@@ -47,7 +49,6 @@ namespace Projeto_Api.Controllers.DocumentoController
         }
 
         [HttpPut("{id}")]
-        [AllowAnonymous]
         public async Task<IActionResult> editarDocumento(DocumentoPutRequest request, int id)
         {
             try
@@ -70,6 +71,12 @@ namespace Projeto_Api.Controllers.DocumentoController
             try
             {
                 var documentos = await repositorio.GetAllAsync(pageParams);
+
+                documentos.ForEach(d =>
+                {
+                    d.data = $"{d.EditedOn.Year}/{d.EditedOn.Month}/{d.EditedOn.Day}";
+                });
+
                 if (documentos == null) return NoContent();
 
                 
@@ -88,15 +95,18 @@ namespace Projeto_Api.Controllers.DocumentoController
 
 
         [HttpGet("{id}")]
-        [AllowAnonymous]
         public async Task<IActionResult> BuscarDocById(int id)
         {
             try
             {
-                var query = await repositorio.GetById(id);
-                if (query == null) return NotFound("usuario ou documento nao encontrado");
+                var documento = await repositorio.GetById(id);
 
-                return Ok(query);
+                documento.data = $"{documento.EditedOn.Year}/{documento.EditedOn.Month}/{documento.EditedOn.Day}";
+             
+
+                if (documento == null) return NotFound("usuario ou documento nao encontrado");
+
+                return Ok(documento);
             }
             catch (Exception ex)
             {
@@ -104,14 +114,59 @@ namespace Projeto_Api.Controllers.DocumentoController
                     $"Erro: {ex.Message}");
             }
         }
+        [HttpPost("sendGrid")]
+        [AllowAnonymous]
+        public async Task<ObjectResult> sendGrid()
+        {
+            try
+            {
+                var client = new SendGridClient("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");
+                var from = new EmailAddress("gabipaiz@gmail.com", "Gabriel moraes");
+                var subject = "Sending with SendGrid is Fun";
+                var to = new EmailAddress("ilopaiz@gmail.com", "Gabriel Paiz");
+                var plainTextContent = "and easy to do anywhere, even with C#";
+                var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
+                var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+                var response = await client.SendEmailAsync(msg);
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                return NotFound(e);
+            }
+        } [HttpPost("sendGrid2")]
+        [AllowAnonymous]
+        public async Task<ObjectResult> sendGrid2()
+        {
+            try
+            {
+                var client = new SendGridClient("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");
+                var from = new EmailAddress("gabipaiz@gmail.com", "Gabriel M oraes");
+                var subject = "Sending with SendGrid is Fun";
+                var to = new EmailAddress("cfninja2013@gmail.com", "Gabriel paiz");
+                var plainTextContent = "and easy to do anywhere, even with C#";
+                var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
+                var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+                var response = await client.SendEmailAsync(msg);
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                return NotFound(e);
+            }
+        }
 
         [HttpGet("buscar/usuario")]
-        [AllowAnonymous]
         public async Task<IActionResult> BuscarTodosDocumentosDoUsuarioAutenticado([FromQuery] PageParams pageParams)
         {
             try
             {
                 var documentos = await repositorio.GetAllDocDoUsuarioAsync(pageParams);
+
+                documentos.ForEach(d =>
+                {
+                    d.data = $"{d.EditedOn.Year}/{d.EditedOn.Month}/{d.EditedOn.Day}";
+                });
                 if (documentos == null) return NoContent();
 
                 Response.AddPagination(documentos.CurrentPage,
@@ -126,14 +181,7 @@ namespace Projeto_Api.Controllers.DocumentoController
             }
         }
 
-        /*public async Task<IActionResult> get()
-        {
-            var result = repositorio.getArquiveS3();
-            return Ok(result);
-        }*/
-
         [HttpGet("file/{id}")]
-        [AllowAnonymous]
         public async Task<IActionResult> getFile(int id)
         {
             var documento = repositorio.GetByIdEntity(id);
@@ -161,8 +209,6 @@ namespace Projeto_Api.Controllers.DocumentoController
         }
 
         [HttpDelete("{id}")]
-        [EnableCors]
-        [AllowAnonymous]
         public async Task<IActionResult> deleteDocById(int id)
         {
             try

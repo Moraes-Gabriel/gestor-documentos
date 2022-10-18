@@ -67,6 +67,7 @@ namespace Projeto_Api.Repositorio
         public Tipo Post(TipoRequest request)
         {
             Tipo tipo = new Tipo(request.Nome, request.Sigla);
+            tipo.Sigla = tipo.Sigla.ToUpper();
             context.Tipos.Add(tipo);
             context.SaveChanges();
             return tipo;
@@ -76,6 +77,7 @@ namespace Projeto_Api.Repositorio
             var entity = GetEntityById(id);
             entity.Sigla = request.Sigla;
             entity.Nome = request.Nome;
+            entity.EditedOn = DateTime.Now;
             context.SaveChanges();
             return new TipoResponse(entity.Id, entity.Nome, entity.Sigla);
         }

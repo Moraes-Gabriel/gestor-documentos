@@ -23,9 +23,9 @@ namespace Avaliacao_loja_interativa_c.Repositorio
             throw new NotImplementedException();
         }
 
-        public User Get(string email, string senha)
+        public User Get(string email)
         {
-            return context.Users.Where(x => x.Email.ToLower() == email.ToLower() && x.Senha == senha).FirstOrDefault();
+            return context.Users.Where(x => x.Email.ToLower() == email.ToLower()).FirstOrDefault();
         }
      
     }

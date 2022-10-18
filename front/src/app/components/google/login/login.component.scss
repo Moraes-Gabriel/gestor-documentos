@@ -1,0 +1,41 @@
+.main {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: round;
+}
+
+.matcard {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.tela {
+    width: 370px;
+    height: 420px;
+    background-color: white;
+    text-align-last: center;
+
+}
+.conteudo-titulo {
+
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 50%;
+}
+.div-titulos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img {
+    height: 60px;
+}

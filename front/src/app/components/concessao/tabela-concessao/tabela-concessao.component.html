@@ -3,7 +3,7 @@
     <h2 class="azul">Concessoes</h2>
 
     <div class="div-btn">
-      <button class="azul btn btn-header" routerLink="/concessoes/criar">
+      <button class="azul btn btn-header" routerLink="/admin/concessoes/criar">
         <img class="" src="../../../../assets/imagens/add.png" alt="">
         <p class="azul p criar-doc">Criar Concessao</p>
       </button>
@@ -34,7 +34,9 @@
         <td>{{c?.nome}}</td>
         <td>{{c?.sigla}}</td>
         <td style="display: flex; justify-content:end;">
-          <button class="td-btn btn btn-primary bac-azul" (click)="editarConcessao(c.id)">Editar</button>
+          <button class="td-btn btn btn-primary bac-azul" (click)="editarConcessao(c.id)">
+            <img src="../../../../assets/imagens/edit.png" style="margin-left: 0;" class="icon" alt="">
+            Editar</button>
         </td>
       </tr>
     </tbody>

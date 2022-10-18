@@ -21,10 +21,6 @@ export class NavDocumentosComponent implements OnInit {
     this.corMeu = "#e9eff4"; 
   }
   
-  nenhumaCorFunc(){
-    this.corAll = "#e9eff4"; 
-    this.corMeu = "#e9eff4"; 
-  }
   constructor(private router: Router) { }
 
   ngOnInit(): void {

@@ -21,8 +21,6 @@ import { UserComponent } from './components/user/user.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { HomeComponent } from './components/home/home.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
-import { MeusDocumentosTabelaComponent } from './components/documentos/meus-documentos-tabela/meus-documentos-tabela.component';
-import { IndiceDocumentosTabelaComponent } from './components/documentos/indice-documentos-tabela/indice-documentos-tabela.component';
 import { DetalheDocumentoComponent } from './components/documentos/detalhe-documento/detalhe-documento.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { AlertModule,AlertConfig } from 'ngx-bootstrap/alert';
@@ -42,6 +40,9 @@ import { TabelaTipoComponent } from './components/tipo/tabela-tipo/tabela-tipo.c
 import { CriarTipoComponent } from './components/tipo/criar-tipo/criar-tipo.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TabelaDocumentosComponent } from './components/documentos/tabela-documentos/tabela-documentos.component';
+import { RouterModule } from '@angular/router';
+import { MaterialModule } from './material/material.module';
+import { LoginGoogleComponent } from './components/google/login/loginGoogle.component';
 
 @NgModule({
   declarations: [
@@ -55,8 +56,6 @@ import { TabelaDocumentosComponent } from './components/documentos/tabela-docume
     RegistrationComponent,
     UserComponent,
     HomeComponent,
-    MeusDocumentosTabelaComponent,
-    IndiceDocumentosTabelaComponent,
     DetalheDocumentoComponent,
     ModalDocumentoCadastradoComponent,
     NavAdminComponent,
@@ -68,9 +67,12 @@ import { TabelaDocumentosComponent } from './components/documentos/tabela-docume
     TabelaTipoComponent,
     CriarTipoComponent,
     TabelaDocumentosComponent,
+    LoginGoogleComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
     CommonModule,
     AppRoutingModule,
     FormsModule,
@@ -93,6 +95,7 @@ import { TabelaDocumentosComponent } from './components/documentos/tabela-docume
     CarouselModule,
     CollapseModule,
     BsDatepickerModule.forRoot(),
+    MaterialModule,
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass:JwtInterceptor, multi: true}, AlertConfig, BsDatepickerConfig, BsDropdownConfig],
   bootstrap: [AppComponent]

@@ -1,15 +1,37 @@
+.div-superior-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.div-superior-titulo > .div-titulo-abreviacao {
+    background: #7082a4;
+    height: 40px;
+    width: 160px;
+    border-radius: 8%;
+    border: white;
+
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
 .titulo {
     margin: 25px 0;
     font-size: 22px;
 }
+
 .dica {
 
     display: flex;
     align-items: center;
     border: 1px solid grey;
-    
+
 }
-.dica > div{
+
+.dica>div {
     width: 200px;
     height: 150px;
     justify-content: center;
@@ -18,14 +40,17 @@
     margin-right: 30px;
     border: 2px solid lightgrey;
 }
-.h2{
+
+.h2 {
     font-size: 18px;
 }
-.dica > div > img{
+
+.dica>div>img {
 
     height: 50px;
     color: blue;
 }
+
 .div_form {
 
     display: flex;
@@ -36,11 +61,13 @@
     width: 49%;
     margin: 25px 0;
 }
-.btn-criar-doc{
+
+.btn-criar-doc {
     margin-top: 20px;
     height: 50px;
 }
-.btn-criar-doc > img {
+
+.btn-criar-doc>img {
     height: 18px;
     margin-right: 10px;
 }

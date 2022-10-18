@@ -32,11 +32,11 @@ namespace Projeto_Api.Controllers.Tipo
         {
             var response = repositorio.Post(request);
 
-            if (response == null)
-                NoContent();
+            if (response == null) NoContent();
+
+
             return Results.Created($"/Tipo/{response.Id}", response.Id);
         }
-
 
         [HttpGet]
         [Authorize]

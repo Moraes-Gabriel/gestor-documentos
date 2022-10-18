@@ -18,10 +18,10 @@ export class AppComponent {
   constructor(public accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
-    
     this.setCurrentUser();
-
   }
+
+  
   mudarModeAdmin($event: any) {
     this.modeAdmin = !this.modeAdmin;
     this.display = this.modeAdmin == true ? "flex" : "block";
@@ -33,6 +33,9 @@ export class AppComponent {
     this.accountService.currentUser$.subscribe(
       (r) => {
 
+        this.display = 'block';
+        this.modeAdmin = false;
+        
       },
       (R) => {  
        },

@@ -20,12 +20,15 @@ import { TipoService } from 'src/app/services/tipo.service';
 })
 export class TabelaDocumentosComponent implements OnInit {
 
-  documentos = {} as Documento[];
+  date = Date.now();
+
+  data = "2003/04/03"
+  documentos: Documento[] = [];
   documentoPageRequest = {} as DocumentoPageRequest;
   pagination = {} as Pagination;
 
-  concessaoSelect = {} as Concessao[];
-  tipoSelect = {} as Tipo[];
+  concessaoSelect!: Concessao[];
+  tipoSelect!: Tipo[];
 
   concessaoSelecionado!: number | null;
   tipoSelecionado!: number | null;
@@ -57,7 +60,6 @@ export class TabelaDocumentosComponent implements OnInit {
 
     let url = this.router.url;
 
-    console.log(this.estadoGet);
     
     if (url == '/documentos/meus') {
       this.estadoGet = 'getAllDoUsuario'; this.mode = 'meus'; this.titulo = 'Meus Documentos'}
@@ -69,15 +71,13 @@ export class TabelaDocumentosComponent implements OnInit {
   }
   carregarDocumentos(): void {
 
-    console.log(this.estadoGet);
-
     if (this.estadoGet === 'getAll' || this.estadoGet === 'getAllDoUsuario') {
-      console.log("entrou if");
       
       this.docService[this.estadoGet]
         (this.pagination.currentPage, this.pagination.itemsPerPage, this.descricaoFiltrada, this.concessaoSelecionado, this.tipoSelecionado)
         .subscribe((paginatedResult: PaginatedResult<Documento[]>) => {
           this.sucessToastr();
+          
           this.documentos = paginatedResult.result;
           this.pagination = paginatedResult.pagination;
         },
@@ -89,7 +89,7 @@ export class TabelaDocumentosComponent implements OnInit {
   }
 
   editarDocumento(documentoId: number) {
-    this.router.navigateByUrl(`documentos/criar/${documentoId}`)
+    this.router.navigateByUrl(`documentos/editar/${documentoId}`)
   }
 
   public pageChanged(event: any) {

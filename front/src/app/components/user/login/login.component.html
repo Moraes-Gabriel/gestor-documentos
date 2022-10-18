@@ -1,7 +1,6 @@
 <div>
-    <div class="main" 
-    [ngStyle]="{'background-image' : 'url(../../../../assets/banco-de-imagens/background-login.png)'}"
-    >
+    <div class="main"
+        [ngStyle]="{'background-image' : 'url(../../../../assets/banco-de-imagens/background-login.png)'}">
         <section class="tela">
             <div class="conteudo-titulo">
                 <img src="https://ri.taesa.com.br/wp-content/themes/ri-taesa/imgs/logo.png?v2" alt="">
@@ -11,14 +10,14 @@
                 </div>
             </div>
             <form #loginForm="ngForm" (ngSubmit)="login()" action="">
-                <input 
-                [(ngModel)] = "model.email"
-                name="email" type="email" placeholder="E-mail">
-                <input 
-                [(ngModel)] = "model.senha"
-                name="senha" type="password" placeholder="Senha">
+                <input [(ngModel)]="model.email" name="email" type="email" placeholder="E-mail">
+                <input [(ngModel)]="model.senha" name="senha" type="password" placeholder="Senha">
                 <button [disabled]="loginForm.invalid" type="submit">Login</button>
+
             </form>
+
+            <a href="user/login/google" style="margin-top: 20px;">Logar de outra maneira</a>
+
         </section>
     </div>
 </div>

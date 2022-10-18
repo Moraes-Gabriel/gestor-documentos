@@ -25,6 +25,7 @@ export class CriarDocumentosComponent implements OnInit {
   documentoId!: number;
   titulo: String =  "Criar documento";
   tituloBotao: String =  "Gerar numero documento";
+  status: String = "criar";
   estadoSalvar: any = "post";
 
   constructor(private fb: FormBuilder,
@@ -39,6 +40,7 @@ export class CriarDocumentosComponent implements OnInit {
     
     if (this.documentoId !== null && this.documentoId !== undefined && this.documentoId !== 0) {
       this.estadoSalvar = 'put';
+      this.status = "editar";
       this.titulo = "Editar documento";
       this.tituloBotao = "Editar documento";
 
@@ -98,7 +100,7 @@ export class CriarDocumentosComponent implements OnInit {
       }else if(this.estadoSalvar === 'put'){ 
         this.docService["put"](this.documento).subscribe((response) => {
           
-          this.router.navigateByUrl(`documentos/pdf/${response.value}`)
+          this.router.navigateByUrl(`documentos/pdf/${this.documentoId}`)
           this.showSuccess();
         })
       }

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="div-content">
         <div class="div-titulo">
-        <h2 class=" titulo azul">{{documento.abreviacao}} - Projeto Executivo de Subestação de Transmissão</h2>
+        <h2 class=" titulo azul">{{documento.abreviacao.toUpperCase()}} - {{documento.descricao}}</h2>
     </div>
         <div class="div-box-info">
             <div class="box-info">
@@ -18,7 +18,7 @@
             </div>
             <div class="box-info">
                 <h5 class="azul">DATA ATUALIZÇÃO</h5>
-                <span>{{documento.editadoOn}}</span>
+                <span>{{documento.data | date:'dd/MM/yyyy'}}</span>
             </div>
         </div>
     </div>

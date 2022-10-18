@@ -1,11 +1,14 @@
 <div class="container">
-    <h2 class="titulo azul">{{titulo}}</h2>
+    <div class="div-superior-titulo">
+        <h2 class="titulo azul">{{titulo}}</h2>
+        <div class="div-titulo-abreviacao" *ngIf="estadoSalvar === 'put'">{{documento.abreviacao}}</div>
+    </div>
 
     <div class="dica">
         <div class="bac-azul">
             <img src="../../../../assets/imagens/dica.png" class="img-white" alt="">
         </div>
-        <h2 class="h2 azul">Use este recurso para criar o codico de um novo documento. Após a criação você poderá fazer
+        <h2 class="h2 azul">Use este recurso para {{status}} o codico de um novo documento. Após a criação você poderá fazer
             o upload do
             documento (PDF) pela ferramenta</h2>
     </div>

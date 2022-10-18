@@ -11,6 +11,7 @@ export class Documento {
     abreviacao!: string;
     urlArquivoS3!: string;
     editadoOn!: Date;
+    data!: string;
     usuario!:Usuario;
     concessao!: Concessao;
     tipo!: Tipo;

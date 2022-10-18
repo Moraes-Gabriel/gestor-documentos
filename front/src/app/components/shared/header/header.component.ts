@@ -13,14 +13,17 @@ import { AccountService } from 'src/app/services/account.service';
 export class HeaderComponent implements OnInit {
 
   @Output() outPutModeAdmin = new EventEmitter<Boolean>();
+
+
   modeAdmin = false;
   user: Usuario | null | undefined;
   constructor(public accountService: AccountService,
               private router: Router) { }
               
   showMenu(): Boolean {
-    return this.router.url !== '/user/login';
+    return this.router.url !== '/user/login' && this.router.url !== '/user/login/google';
   }
+  
   logout() {
     this.accountService.logout();
     this.router.navigateByUrl('app');

@@ -1,6 +1,8 @@
 using Amazon.S3;
 using Avaliacao_loja_interativa_c.Repositorio;
 using IWantApp.Infra.Data;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -39,6 +41,7 @@ internal class Program
         {
             x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
         }).AddJwtBearer(x =>
         {
             x.RequireHttpsMetadata = false;
@@ -68,13 +71,18 @@ internal class Program
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
-        builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+        builder.Services.AddCors(opt =>
         {
-            builder.WithOrigins("*").AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-        }));
-        
+            opt.AddPolicy(name: "CorsPolicy", builder =>
+            {
+                builder.WithOrigins("http://localhost:4200","*")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
+            });
+        });
 
-    var app = builder.Build();
+        var app = builder.Build();
         app.UseAuthentication();
         app.UseAuthorization();
 
@@ -87,6 +95,7 @@ internal class Program
 
         app.UseHttpsRedirection();
         app.UseCors("corsapp");
+        app.UseCors("CorsPolicy");
 
         app.MapControllers();
         app.Run();
