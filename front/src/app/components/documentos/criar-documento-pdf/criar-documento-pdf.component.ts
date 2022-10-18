@@ -18,14 +18,13 @@ export class CriarDocumentoPdfComponent implements OnInit {
   shortLink: string = "";
   loading: boolean = false; // Flag variable
   pdfDoc: any;
-  file!: File | null; // Variable to store file
+  file!: File[] | null; // Variable to store file
 
   onFileSelected() {
     let $img: any = document.querySelector('#file');
     
     if (typeof (FileReader) !== 'undefined') {
       let reader = new FileReader();
-  
       reader.onload = (e: any) => {
         this.pdfDoc = e.target.result;
       };
@@ -33,6 +32,7 @@ export class CriarDocumentoPdfComponent implements OnInit {
       reader.readAsArrayBuffer($img.files[0]);
     }
   }
+
   constructor(
     private docService: DocumentosService,
     private route: ActivatedRoute,

@@ -1,18 +1,18 @@
 
 <div class="div_main" 
 [ngStyle]="{'background-image' : 'url(../../../../assets/backgrounds/backgrounds-azul.png)'}" 
-*ngIf="showMenu()">
+*ngIf="showMenu() ">
     <div class="container">
         <section>
             <div class="content_header_inicio">
-                <i class=""><img class="img-icon-header" src="../../../assets/imagens/icon-document.png" alt=""> </i>
+                <i class=""><img class="img-icon-header" src="../../../assets/imagens/iconHeader.png" alt=""> </i>
                 <div class="div_titulo">
-                    <h2>GESTOR</h2>
-                    <h2>GESTOR DE DOCUMENTOS</h2>
+                    <h2 style="margin: 0px; height: 20px;">GESTOR</h2>
+                    <h2 style="margin: 0px; ">GESTOR DE DOCUMENTOS</h2>
                 </div>
                 <div class="barra"></div>
                 <div class="content_header_two">
-                    <h3>Dashboard</h3>
+                    <h3 style="margin: 0px;">Dashboard</h3>
                     <p>login > Dashboard</p>
                 </div>
 
@@ -30,7 +30,9 @@
                    role="menu" aria-labelledby="button-basic">
                    <li role="menuitem"><a class="dropdown-item" (click)="logout()">Sair</a></li>
                    <li *ngIf="user?.role === 'admin'"class="divider dropdown-divider"></li>
-                   <li *ngIf="user?.role === 'admin'"  role="menuitem"><a class="dropdown-item" (click)="mudarModoAdmin()">Configurações</a>
+                   <li *ngIf="user?.role === 'admin'"  role="menuitem"><a class="dropdown-item" (click)="mudarModoAdmin()">
+                    <img src="../../../../assets/imagens/engrenagem.png" class="img-admin" alt="">
+                    Configurações</a>
                    </li>
                 </ul>
              </div>

@@ -57,20 +57,6 @@ namespace Projeto_Api.Repositorio
             return mapper.Map<DocumentoResponse>(documento);
         }
 
-        public List<DocumentoResponse> GetAll()
-        {
-            DateTime diaParaVerificarDelecao = new DateTime(1, 02, 02);
-
-            var responses = context.Documentos.Include(d => d.Concessao)
-                .Include(d => d.Tipo)
-                .Include(d => d.Usuario)
-                .Where(d =>
-                d.DeletedOn < diaParaVerificarDelecao
-                ).ToList();
-
-
-            return mapper.Map<List<DocumentoResponse>>(responses);
-        }
 
         public Documento GetByIdEntity(int id)
         {
@@ -98,7 +84,7 @@ namespace Projeto_Api.Repositorio
             documento.urlArquivoS3 = "";
             context.Documentos.Add(documento);
             context.SaveChanges();
-            sendGrid.SendGrid(documento);
+            var msg = sendGrid.SendGrid(documento);
             return mapper.Map<DocumentoResponse>(documento);
         }
 
@@ -114,6 +100,7 @@ namespace Projeto_Api.Repositorio
             documento.Concessao = concessao;
             documento.Tipo = tipo;
             documento.Descricao = request.Descricao;
+            documento.EditedOn = DateTime.Now;
 
             context.SaveChanges();
             return mapper.Map<DocumentoResponse>(documento);
@@ -125,10 +112,19 @@ namespace Projeto_Api.Repositorio
         }
         private string AdicionarAbreviacaoAoDocumento(Tipo tipo, Concessao concessao)
         {
-            int numeroDeDocumentosComEssasSiglas = context.Documentos
+            int numeroDeDocumentosComEssasSiglas = 
+                context.Documentos.Where
+                (d => d.Tipo.Sigla == tipo.Sigla && d.Concessao.Sigla == concessao.Sigla).ToList().Count();
 
-                 .Where(d => d.Tipo.Sigla == tipo.Sigla && d.Concessao.Sigla == concessao.Sigla).ToList().Count();
-            return $"{tipo.Sigla}.{concessao.Sigla}.{numeroDeDocumentosComEssasSiglas + 1}";
+
+            int numero = numeroDeDocumentosComEssasSiglas + 1;
+            string str = numero.ToString("0000");
+
+
+            var abreviacao = $"{tipo.Sigla}.{concessao.Sigla}.{str }";
+
+           
+            return abreviacao.ToUpper();
 
         }
 
@@ -155,7 +151,8 @@ namespace Projeto_Api.Repositorio
                 .Documentos.Include(d => d.Concessao)
                 .Include(d => d.Tipo)
                 .Include(d => d.Usuario)
-                .Where(d => d.DeletedOn < diaParaVerificarDelecao);
+                .Where(d => d.DeletedOn < diaParaVerificarDelecao)
+                .OrderByDescending(d => d.Id);
 
             query = query.AsNoTracking()
                     .Where(d => d.Descricao.ToLower().Contains(pageParams.Descricao.ToLower()));
@@ -180,7 +177,8 @@ namespace Projeto_Api.Repositorio
                 .Documentos.Include(d => d.Concessao)
                 .Include(d => d.Tipo)
                 .Include(d => d.Usuario)
-                .Where(d => d.DeletedOn < diaParaVerificarDelecao && d.UserId == userId);
+                .Where(d => d.DeletedOn < diaParaVerificarDelecao && d.UserId == userId)
+                .OrderByDescending(d => d.EditedOn); 
 
 
             if (pageParams.Descricao.Length > 0 && pageParams.Descricao != "")

@@ -9,14 +9,23 @@ namespace Projeto_Api.Services
     {
         public async Task<Response> SendGrid(Documento documento)
         {
-            var client = new SendGridClient("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");
-            var from = new EmailAddress("gabipaiz@gmail.com", "Gabriel Moraes");
-            var subject = "Documento criado com suecsso";
-            var to = new EmailAddress(documento.Usuario.Email, documento.Usuario.Nome);
-            var plainTextContent = "documento" + documento.Abreviacao;
-            var htmlContent = "<strong>Documento criado</strong>";
-            var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
-            return await client.SendEmailAsync(msg);    
+            try
+            {
+
+                var client = new SendGridClient("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");
+                var from = new EmailAddress("gabipaiz@gmail.com", "Gabriel De Moraes Paiz");
+                var subject = "Documento criado com asdsuecsso";
+                var to = new EmailAddress("cfninja2013@gmail.com", "Gabriel Paiz");
+                var plainTextContent = "and easy to do anywhere, even with C#";
+                var htmlContent = "<strong>and easy to do anywhere, even with C#</strong>";
+                var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+                return await client.SendEmailAsync(msg);
+
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
     }
 }

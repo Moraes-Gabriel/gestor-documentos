@@ -14,6 +14,7 @@ namespace Projeto_Api.data.response
         public Tipo Tipo { get; set; }
         public User Usuario { get; set; }
         public DateTime EditedOn { get; set; }
+        public string data { get; set; }
         public DocumentoResponse()
         {
         }

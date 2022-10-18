@@ -1,17 +1,17 @@
 <div class="container">
-    <div class="header-tabela">
-        <h2 class="azul">tipos</h2>
+  <div class="header-tabela">
+    <h2 class="azul">Tipos</h2>
 
-        <div class="div-btn">
-        <button class="azul btn btn-header" routerLink="/tipos/criar">
-            <img  class="" src="../../../../assets/imagens/add.png" alt="">
-              <p class="azul p criar-doc">Criar Tipo</p>
-          </button>
-        </div>
+    <div class="div-btn">
+      <button class="azul btn btn-header" routerLink="/admin/tipos/criar">
+        <img class="" src="../../../../assets/imagens/add.png" alt="">
+        <p class="azul p criar-doc">Criar tipo</p>
+      </button>
     </div>
-<table class="table">
+  </div>
+  <table class="table">
     <thead>
-      <tr >
+      <tr>
         <th scope="col">Id
           <img src="../../../../assets/imagens/double-arrow-vertical-symbol.png" class="th-img" alt="">
         </th>
@@ -23,33 +23,27 @@
         </th>
         <th scope="col" style="display: flex; justify-content:end; padding-right: 20px;">açoes</th>
       </tr>
-     
+
     </thead>
     <tbody>
-        <tr *ngFor="let c of tipos">
+      <tr *ngFor="let c of tipos">
         <th scope="row">{{c?.id}}</th>
         <td>{{c?.nome}}</td>
         <td>{{c?.sigla}}</td>
         <td style="display: flex; justify-content:end;">
-            <button class="td-btn btn btn-primary bac-azul" (click)="editarTipo(c.id)">Editar</button>
+          <button class="td-btn btn btn-primary bac-azul" (click)="editarTipo(c.id)">
+            <img src="../../../../assets/imagens/edit.png" style="margin-left: 0;" class="icon" alt="">
+
+            Editar</button>
         </td>
       </tr>
     </tbody>
   </table>
 
   <div class="d-flex justify-content-center">
-    <pagination
-     [boundaryLinks]="true" 
-
-     [totalItems]="pagination.totalItems"
-     [itemsPerPage]="pagination.itemsPerPage"
-     [(ngModel)]="pagination.currentPage"
-      (pageChanged)="pageChanged($event)"
-
-     previousText="&lsaquo;"
-      nextText="&rsaquo;"
-       firstText="&laquo;"
-        lastText="&raquo;">
-</pagination>
-</div>
+    <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage"
+      [(ngModel)]="pagination.currentPage" (pageChanged)="pageChanged($event)" previousText="&lsaquo;"
+      nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+    </pagination>
+  </div>
 </div>

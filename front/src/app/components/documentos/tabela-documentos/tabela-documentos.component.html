@@ -1,5 +1,18 @@
 <div class="container">
-    <h2 class="titulo azul">{{titulo}}</h2>
+    <div class="div-titulo-botao">
+        <h2 class="titulo azul">{{titulo}}</h2>
+
+
+        <div class="div-btn">
+
+            <button class="azul btn" routerLink="/documentos/criar">
+                <img class="img-criar-doc" src="../../../../assets/imagens/add.png" alt="">
+                <p class="azul p criar-doc">Criar documento</p>
+            </button>
+            
+        </div>
+
+    </div>
 
     <form action="" class=" form-documentos input-group mb-3">
 
@@ -20,7 +33,7 @@
         </div>
         <div class="div-select">
             <select class="form-select" aria-label="Default select example" (change)="onChangeTipo($event)">
-                <option selected [ngValue]="undefined">Tipo</option>
+                <option selected [ngValue]="undefined" >Tipo</option>
                 <option *ngFor="let tipo of tipoSelect" [value]="tipo?.id">{{tipo?.nome}}</option>
             </select>
         </div>
@@ -30,51 +43,53 @@
     <table class="table">
         <thead class="">
             <tr class="tr-table-info">
-                <th>ID
+                <th class="th-id">ID
                     <img src="../../../../assets/imagens/double-arrow-vertical-symbol.png" class="th-img" alt="">
-                </th>
-                <th>Concessão
-                    <img src="../../../../assets/imagens/double-arrow-vertical-symbol.png" class="th-img" alt="">
-
-                </th>
-                <th>Tipo
+                </th >
+                <th class="th-concessao">Concessão
                     <img src="../../../../assets/imagens/double-arrow-vertical-symbol.png" class="th-img" alt="">
 
-                </th>
-                <th>Documento
+                </th >
+                <th class="th-tipo">Tipo
                     <img src="../../../../assets/imagens/double-arrow-vertical-symbol.png" class="th-img" alt="">
 
-                </th>
-                <th>Descrição
+                </th >
+                <th class="th-documento">Documento
                     <img src="../../../../assets/imagens/double-arrow-vertical-symbol.png" class="th-img" alt="">
 
-                </th>
-                <th>Data atualização
+                </th >
+                <th class="th-descrição">Descrição
                     <img src="../../../../assets/imagens/double-arrow-vertical-symbol.png" class="th-img" alt="">
 
-                </th>
-                <th>Criador
+                </th >
+                <th class="th-data">Data <br>atualização
                     <img src="../../../../assets/imagens/double-arrow-vertical-symbol.png" class="th-img" alt="">
 
-                </th>
-                <th>opções
+                </th >
+                <th class="th-criador">Criador
+                    <img src="../../../../assets/imagens/double-arrow-vertical-symbol.png" class="th-img" alt="">
+
+                </th >
+                <th class="th-opcoes">opções
                     <img src="../../../../assets/imagens/double-arrow-vertical-symbol.png" class="th-img" alt="">
 
                 </th>
             </tr>
         </thead>
-        <tbody *ngIf="documentos && documentos?.length" else #templateSemDocumentos>
+        <tbody *ngIf="documentos.length > 0">
             <tr *ngFor="let documento of documentos">
                 <th>{{documento?.id}}</th>
-                <th>{{documento?.concessao?.sigla}}</th>
+                <th>{{documento?.concessao?.sigla}}.</th>
                 <th>{{documento?.tipo?.sigla}}</th>
                 <th>{{documento?.abreviacao}}</th>
                 <th class="th-descricao">{{documento?.descricao}}</th>
-                <th>2404203</th>
+                <th>{{documento.data | date:'dd/MM/yyyy'}}</th>
                 <th>{{documento?.usuario?.nome}}</th>
                 <th class="th-opções">
-                    <button class="th-btn bac-azul " (click)="vizualizarEvento(documento?.id)">
+                    <button class="th-btn bac-azul " (click)="vizualizarEvento(documento?.id)"
+                        [ngClass]="mode === 'todos' ? 'button-todos': 'button-meus'">
                         <img class="img-white" src="../../../../assets/imagens/view.png" alt="">
+                        <p>ver</p>
                     </button>
 
 
@@ -84,18 +99,16 @@
                 </th>
             </tr>
         </tbody>
-        <tfoot *ngIf="!documentos">
+        <tfoot *ngIf="documentos.length === 0">
             <tr>
                 <td colspan="8" class="text-center"> Não há nenhum documento para listar</td>
             </tr>
         </tfoot>
     </table>
-
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center" *ngIf="documentos.length > 0">
         <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage"
             [(ngModel)]="pagination.currentPage" (pageChanged)="pageChanged($event)" previousText="&lsaquo;"
             nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
         </pagination>
     </div>
-
 </div>

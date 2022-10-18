@@ -15,7 +15,12 @@ namespace Avaliacao_loja_interativa_c.Models
         [Required]
         public string Email { get; set; }
         [JsonIgnore]
-        public string Senha { get; set; }
+        [Required]
+        public byte[] PasswordSalt { get; set; }
+
+        [Required]
+        [JsonIgnore]
+        public byte[] PasswordHash { get; set; }
         public string Role { get; set; }
         [JsonIgnore]
         public ICollection<Documento> Documentos{ get; set; }

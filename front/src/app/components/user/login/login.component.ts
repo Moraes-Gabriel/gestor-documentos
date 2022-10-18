@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
       () => {
         this.showSuccess();
         this.router.navigateByUrl('/documentos/meus');
-        
       },
       (error:any) => {
         if(error.status == 401 || error.status == 404)

@@ -5,7 +5,7 @@ namespace Projeto_Api.data.Interfaces
 {
     public interface IUserRepo
     {
-        User Get(string email, string senha);
+        User Get(string email);
         User buscarUsuarioAutenticado();
     }
 }

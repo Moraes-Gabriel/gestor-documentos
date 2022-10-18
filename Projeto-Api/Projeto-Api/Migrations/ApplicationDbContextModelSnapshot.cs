@@ -35,12 +35,15 @@ namespace Projeto_Api.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
 
-                    b.Property<string>("Role")
+                    b.Property<byte[]>("PasswordHash")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("varchar(100)");
+                        .HasColumnType("longblob");
 
-                    b.Property<string>("Senha")
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("longblob");
+
+                    b.Property<string>("Role")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("varchar(100)");
@@ -81,10 +84,12 @@ namespace Projeto_Api.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("Nome")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasAnnotation("MySql:IndexPrefixLength", new[] { 3 });
 
                     b.HasIndex("Sigla")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasAnnotation("MySql:IndexPrefixLength", new[] { 3 });
 
                     b.ToTable("Concessoes");
                 });
@@ -132,6 +137,9 @@ namespace Projeto_Api.Migrations
 
                     b.HasIndex("ConcessaoId");
 
+                    b.HasIndex("Descricao")
+                        .HasAnnotation("MySql:IndexPrefixLength", new[] { 3 });
+
                     b.HasIndex("TipoId");
 
                     b.HasIndex("UserId");
@@ -167,10 +175,12 @@ namespace Projeto_Api.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("Nome")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasAnnotation("MySql:IndexPrefixLength", new[] { 3 });
 
                     b.HasIndex("Sigla")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasAnnotation("MySql:IndexPrefixLength", new[] { 3 });
 
                     b.ToTable("Tipos");
                 });

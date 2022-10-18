@@ -28,7 +28,8 @@ namespace Projeto_Api.Repositorio
         [AllowAnonymous]
         public ConcessaoResponse Post(ConcessaoRequest request)
         {
-            var concessao = new Concessao(request.Nome, request.Sigla);
+            var concessao = new Concessao(request.Nome, request.Sigla.ToUpper());
+            concessao.Sigla = concessao.Sigla.ToUpper();
             context.Concessoes.Add(concessao);
             context.SaveChanges();
             return mapper.Map<ConcessaoResponse>(concessao);
@@ -64,7 +65,6 @@ namespace Projeto_Api.Repositorio
 
             entity.Nome = request.Nome;
             entity.Sigla = request.Sigla;
-
             entity.EditedOn = DateTime.Now;
 
             context.Concessoes.Update(entity);

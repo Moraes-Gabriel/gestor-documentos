@@ -8,9 +8,17 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Projeto_Api
 build_property.RootNamespace = Projeto_Api
+<<<<<<< HEAD
+build_property.ProjectDir = C:\Users\user\Documents\myProjects\gestor-documentos\Projeto-Api\Projeto-Api\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\user\Documents\myProjects\gestor-documentos\Projeto-Api\Projeto-Api
+=======
 build_property.ProjectDir = c:\Users\vanna\Documents\myProjects\projeto-Loja-Interativa\Projeto-Api\Projeto-Api\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = c:\Users\vanna\Documents\myProjects\projeto-Loja-Interativa\Projeto-Api\Projeto-Api
+>>>>>>> c20ff741df748f5c6dba690b73bbc1c3abb33bb4
 build_property._RazorSourceGeneratorDebug = 

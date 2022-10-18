@@ -6,7 +6,7 @@ namespace Projeto_Api.Domain.Tipos
     {
      
         public string Nome { get; set; }
-        public string Sigla { get; set; }
+        public string Sigla {  get; set; }
 
         public Tipo(string nome, string sigla)
         {
