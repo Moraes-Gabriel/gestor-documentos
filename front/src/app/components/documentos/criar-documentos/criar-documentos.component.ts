@@ -104,17 +104,21 @@ export class CriarDocumentosComponent implements OnInit {
           this.showSuccess();
         })
       }
-  }
-
-  openModal(event: any, template: TemplateRef<any>): void {
-    event.stopPropagation();
-    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
-  }
-  
-  confirm() {
-    this.docService.delete(this.documentoId).subscribe(
-      () => this.toastr.success("sucesso ao deletar o documento", "documento deletado"),
-      () => this.toastr.error("erro ao deletar o documento","erro ao deletar")
+    }
+    
+    openModal(event: any, template: TemplateRef<any>): void {
+      event.stopPropagation();
+      this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+    }
+    
+    confirm() {
+      this.docService.delete(this.documentoId).subscribe(
+        () => {
+          this.toastr.success("sucesso ao deletar o documento", "documento deletado");
+          this.router.navigate([`documentos/meus`]);
+          this.modalRef.hide();
+      },
+        () => this.toastr.error("erro ao deletar o documento","erro ao deletar")
     )
     
   }

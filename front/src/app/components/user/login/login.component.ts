@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/documentos/meus');
       },
       (error:any) => {
-        if(error.status == 401 || error.status == 404)
+        if(error.status == 401 || error.status == 404 || error.status == 400)
           this.showError();
         else console.error(error);
       }
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     this.toastr.success('Você teve sucesso logar na conta', 'Logado com sucesso');
   }
   showError() {
-    this.toastr.success('Usuario ou senha inválido', 'Não foi possivel logar');
+    this.toastr.error('Usuario ou senha inválido', 'Não foi possivel logar');
   }
   
 }
