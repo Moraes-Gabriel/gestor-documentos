@@ -105,6 +105,3 @@ C:\Users\user\Documents\myProjects\gestor-documentos\Projeto-Api\Projeto-Api\bin
 C:\Users\user\Documents\myProjects\gestor-documentos\Projeto-Api\Projeto-Api\bin\Debug\net6.0\Google.Apis.Auth.PlatformServices.dll
 C:\Users\user\Documents\myProjects\gestor-documentos\Projeto-Api\Projeto-Api\bin\Debug\net6.0\Google.Apis.Auth.dll
 C:\Users\user\Documents\myProjects\gestor-documentos\Projeto-Api\Projeto-Api\bin\Debug\net6.0\Google.Apis.Core.dll
-C:\Users\user\Documents\myProjects\gestor-documentos\Projeto-Api\Projeto-Api\bin\Debug\net6.0\System.Web.Cors.dll
-C:\Users\user\Documents\myProjects\gestor-documentos\Projeto-Api\Projeto-Api\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
-C:\Users\user\Documents\myProjects\gestor-documentos\Projeto-Api\Projeto-Api\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
